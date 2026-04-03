@@ -1,0 +1,44 @@
+2026-04-02 00:05:53,070 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-02 00:05:53,070 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样
+2026-04-02 00:05:57,480 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-02 00:05:57,481 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': 'none'}
+2026-04-02 00:06:00,738 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-04-02 00:06:02,852 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-02 00:06:02,903 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-02 00:06:02,903 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-02 00:06:06,712 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-02 00:06:06,712 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '长沙'}
+2026-04-02 00:06:08,074 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-02 00:06:08,832 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-02 00:06:08,832 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为中雨，气温18摄氏度，空气湿度未知%，东风1-3级，数据发布时间2026-04-02。
+2026-04-02 00:09:02,498 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-02 00:09:02,498 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 4月1日的天气怎么样？
+2026-04-02 00:10:46,052 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-02 00:10:46,052 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 4月1日的天气怎么样？
+2026-04-02 00:10:51,612 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-02 00:10:51,613 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-02 00:10:59,946 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://checkip.amazonaws.com)
+2026-04-02 00:11:02,322 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-02 00:11:02,374 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-02 00:11:02,374 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-02 00:11:09,303 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-02 00:11:09,303 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '长沙'}
+2026-04-02 00:11:10,614 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-02 00:11:11,369 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-02 00:11:11,369 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为中雨，气温18摄氏度，空气湿度未知%，东风1-3级，数据发布时间2026-04-02。
+2026-04-02 00:15:43,264 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-02 00:15:43,265 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我4月1日问过你什么问题？
+2026-04-02 00:16:05,361 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-02 00:16:05,361 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我以前问过你什么问题？
+2026-04-02 00:28:19,968 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-02 00:28:19,968 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我昨天问过你什么问题？
+2026-04-02 00:35:09,099 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-02 00:35:09,099 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我昨天问过你什么问题？
+2026-04-02 00:35:59,644 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-02 00:35:59,644 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 用户查询里都有什么内容？
+2026-04-02 00:39:01,173 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-02 00:39:01,173 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我昨天问过你什么问题？
+2026-04-02 00:41:50,391 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有2条消息。
+2026-04-02 00:41:50,391 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我昨天问过你什么问题？
+2026-04-02 00:44:06,241 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有2条消息。
+2026-04-02 00:44:06,242 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我昨天问过你什么问题？

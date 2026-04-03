@@ -1,0 +1,118 @@
+2026-04-01 20:46:51,472 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-01 20:46:51,472 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-04-01 20:46:55,336 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-01 20:46:55,336 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-01 20:46:58,589 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-04-01 20:47:02,264 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-01 20:47:02,308 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-01 20:47:02,308 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-01 20:47:08,511 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-01 20:47:08,511 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '长沙'}
+2026-04-01 20:47:10,567 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-01 20:47:11,365 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-01 20:47:11,366 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为晴，气温24摄氏度，空气湿度未知%，东风1-3级，数据发布时间2026-04-01。
+2026-04-01 20:47:26,360 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-01 20:47:26,361 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 长沙的天气怎么样？
+2026-04-01 20:47:32,949 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-01 20:47:32,949 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'city': '长沙'}
+2026-04-01 20:47:34,586 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-01 20:47:35,388 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-01 20:47:35,388 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为晴，气温24摄氏度，空气湿度未知%，东风1-3级，数据发布时间2026-04-01。
+2026-04-01 20:50:58,043 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-01 20:50:58,043 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-04-01 20:51:01,176 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-01 20:51:01,176 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-01 20:51:05,177 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-04-01 20:51:06,856 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-01 20:51:06,901 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-01 20:51:06,901 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-01 20:51:09,482 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-01 20:51:09,482 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '长沙'}
+2026-04-01 20:51:10,964 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-01 20:51:11,736 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-01 20:51:11,737 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为晴，气温24摄氏度，空气湿度未知%，东风1-3级，数据发布时间2026-04-01。
+2026-04-01 21:29:53,759 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-01 21:29:53,759 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-04-01 21:29:57,414 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-01 21:29:57,415 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-01 21:30:01,820 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-04-01 21:30:04,108 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-01 21:30:04,158 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-01 21:30:04,158 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-01 21:30:07,337 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-01 21:30:07,337 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '长沙'}
+2026-04-01 21:30:09,142 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-01 21:30:09,922 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-01 21:30:09,922 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为晴，气温24摄氏度，空气湿度未知%，东风1-3级，数据发布时间2026-04-01。
+2026-04-01 21:30:24,315 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-01 21:30:24,315 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-04-01 21:30:27,936 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-01 21:30:27,936 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-01 21:30:29,934 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-04-01 21:30:32,122 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-01 21:30:32,168 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-01 21:30:32,168 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-01 21:30:36,128 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-01 21:30:36,128 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '长沙'}
+2026-04-01 21:30:37,924 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-01 21:30:38,695 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-04-01 21:30:38,695 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为晴，气温24摄氏度，空气湿度未知%，东风1-3级，数据发布时间2026-04-01。
+2026-04-01 21:39:52,150 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-01 21:39:52,150 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样
+2026-04-01 21:39:56,162 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-01 21:39:56,163 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': 'get_user_location'}
+2026-04-01 21:40:07,196 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-04-01 21:40:09,180 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-01 21:40:09,230 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-01 21:40:09,230 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-01 21:40:12,997 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-01 21:40:12,997 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '长沙'}
+2026-04-01 21:40:14,486 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-01 21:40:15,225 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-01 21:40:15,225 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为晴，气温24摄氏度，空气湿度未知%，东风1-3级，数据发布时间2026-04-01。
+2026-04-01 21:40:31,288 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-01 21:40:31,288 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样
+2026-04-01 21:40:36,176 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-01 21:40:36,176 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-01 21:40:40,010 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-04-01 21:40:41,326 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-01 21:40:41,370 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-01 21:40:41,370 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-01 21:40:45,079 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-01 21:40:45,079 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '长沙'}
+2026-04-01 21:40:46,942 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-01 21:40:47,712 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-04-01 21:40:47,712 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为晴，气温24摄氏度，空气湿度未知%，东风1-3级，数据发布时间2026-04-01。
+2026-04-01 21:42:45,904 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-01 21:42:45,904 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我现在在哪个城市？
+2026-04-01 21:42:48,451 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-01 21:42:48,451 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': 'get_user_location'}
+2026-04-01 21:42:56,334 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-04-01 21:42:57,262 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-01 21:42:57,310 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-04-01 21:42:57,311 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-01 21:43:10,496 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有7条消息。
+2026-04-01 21:43:10,496 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我这里天气怎么样？
+2026-04-01 23:50:07,124 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-04-01 23:50:07,124 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-04-01 23:50:09,863 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-01 23:50:09,863 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': 'get_user_location'}
+2026-04-01 23:50:14,175 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-04-01 23:50:16,868 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-01 23:50:16,907 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-01 23:50:16,907 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-01 23:50:19,393 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-01 23:50:19,394 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '长沙'}
+2026-04-01 23:50:20,960 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-01 23:50:21,690 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-01 23:50:21,690 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为晴，气温24摄氏度，空气湿度未知%，东风1-3级，数据发布时间2026-04-01。
+2026-04-01 23:50:36,393 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-04-01 23:50:36,393 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我在哪个城市？
+2026-04-01 23:50:38,792 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-01 23:50:38,792 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-01 23:50:41,621 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-04-01 23:50:42,865 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-01 23:50:42,924 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-01 23:50:42,925 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-01 23:50:49,607 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-04-01 23:50:49,608 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 我这里天气怎么样？

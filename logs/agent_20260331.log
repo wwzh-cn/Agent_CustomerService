@@ -1,0 +1,20 @@
+2026-03-31 22:14:32,297 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-03-31 22:14:32,298 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-03-31 22:35:00,283 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-03-31 22:35:00,283 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-03-31 22:35:03,960 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-03-31 22:35:03,961 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-03-31 22:35:03,961 - agent - ERROR - middleware.py:31 - 工具get_user_location调用失败，原因：get_user_location() takes 0 positional arguments but 1 was given
+2026-03-31 23:10:00,524 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有1条消息。
+2026-03-31 23:10:00,524 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-03-31 23:10:02,819 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-03-31 23:10:02,820 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-03-31 23:10:04,763 - agent - INFO - mcp_client.py:69 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-03-31 23:10:07,459 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-03-31 23:10:07,512 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有3条消息。
+2026-03-31 23:10:07,512 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-03-31 23:10:11,267 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-03-31 23:10:11,267 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '长沙'}
+2026-03-31 23:10:12,502 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-03-31 23:10:13,242 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有5条消息。
+2026-03-31 23:10:13,242 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为中雨，气温14摄氏度，空气湿度未知%，北风1-3级，数据发布时间2026-03-31。

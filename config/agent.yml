@@ -1,0 +1,72 @@
+external_data_path: data/external/records.csv
+gaodekey: f2f13fe4721c1babe351a75e005e6de2
+gaode_base_url: https://restapi.amap.com
+gaode_timeout: 5
+
+# 短期记忆配置（会话层）
+memory:
+  type: "buffer"  # buffer 或 buffer_window
+  max_tokens: 2000  # 最大token限制（可选）
+  window_size: 10   # 窗口模式下的消息数量
+  session_ttl: 3600 # 会话过期时间（秒）
+
+# 文件记忆配置（中期记忆层）
+file_memory:
+  enabled: true
+  base_dir: "./memory"
+
+  # 启动加载配置
+  startup:
+    load_identity: true
+    load_memory: true
+    load_tools: true
+    recent_log_days: 2
+
+  # 日志记录配置
+  logging:
+    enabled: true
+    categories: ["decision", "learning", "error", "completion"]
+    min_severity: "info"
+
+  # 记忆整理配置
+  consolidation:
+    enabled: true
+    interval_hours: 72  # 每72小时整理一次
+    strategy: "rule_based"  # rule_based 或 llm_assisted
+    max_memory_size: 2000  # 字符数
+
+# 语义检索层配置（长期记忆）
+semantic_memory:
+  enabled: false  # 阶段一完成，暂未集成到ReactAgent
+  # 向量数据库配置
+  vector_db:
+    path: "./memory/vectordb"
+    collection_name: "agent_memory"
+    persist: true
+
+  # Embedding模型配置
+  embedding:
+    model_name: "paraphrase-multilingual-MiniLM-L12-v2"
+    device: "cpu"
+    cache_dir: "./models/sentence_transformers"
+
+  # 索引配置
+  indexing:
+    chunk_size: 500
+    chunk_overlap: 50
+    max_chunks_per_file: 100
+    auto_index: false  # 暂不自动索引
+    index_interval_hours: 24
+    force_reindex_days: 30
+
+  # 检索配置
+  retrieval:
+    default_top_k: 5
+    min_similarity_score: 0.3
+    enable_rerank: false
+
+  # 资源管理
+  resources:
+    max_index_size_mb: 500
+    cleanup_strategy: "lru"
+    cleanup_keep_days: 180
