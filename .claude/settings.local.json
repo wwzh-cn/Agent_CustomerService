@@ -6,7 +6,13 @@
       "Bash(ls -la agent/*.py)",
       "Bash(git add:*)",
       "Bash(python3 -c ':*)",
-      "Bash(python -c ':*)"
+      "Bash(python -c ':*)",
+      "Bash(find agent:*)",
+      "Bash(python -m pytest test/verify_integration.py -v)",
+      "Bash(python test/verify_integration.py)",
+      "Bash(python -m pytest test/test_gaode_mcp.py -v)",
+      "Bash(python -m pytest test/identify_gaode_tools.py -v)",
+      "Bash(python -m pytest test/ -v)"
     ]
   }
 }
