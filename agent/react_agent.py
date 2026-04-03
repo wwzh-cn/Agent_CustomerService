@@ -17,12 +17,12 @@ from utils.prompt_loader import load_system_prompts
 # from agent.tools.agent_tools import (rag_summarize, get_weather, get_user_location, get_user_id,
 #                                      get_current_month, fetch_external_data, fill_context_for_report)
 # 增强技能导入
-from agent.integrate_enhanced_skills import get_enhanced_tools
+from agent.skills.integrate_enhanced_skills import get_enhanced_tools
 from agent.tools.middleware import monitor_tool, log_before_model, report_prompt_switch
 
 # 记忆管理器导入
-from agent.memory_manager import MemoryManager
-from agent.file_memory import FileMemory
+from agent.memory.memory_manager import MemoryManager
+from agent.memory.file_memory import FileMemory
 from utils.config_handler import agent_conf
 
 
