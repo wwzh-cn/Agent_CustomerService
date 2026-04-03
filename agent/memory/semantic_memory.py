@@ -55,7 +55,7 @@ except ImportError as e:
 LogChunker = None
 
 try:
-    from agent.memory_chunker import LogChunker
+    from agent.memory.memory_chunker import LogChunker
     CHUNKER_AVAILABLE = True
 except ImportError:
     CHUNKER_AVAILABLE = False
