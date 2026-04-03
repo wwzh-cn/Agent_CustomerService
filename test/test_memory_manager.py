@@ -10,7 +10,7 @@ import time
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "/..")
 
-from agent.memory_manager import MemoryManager, MemoryConfig, SessionMemory
+from agent.memory.memory_manager import MemoryManager, MemoryConfig, SessionMemory
 
 
 def test_session_memory():

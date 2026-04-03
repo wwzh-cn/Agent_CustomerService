@@ -15,7 +15,7 @@ def test_memory_manager_integration():
     print("=== Testing memory manager integration ===")
 
     # Test that memory manager can be imported and used
-    from agent.memory_manager import MemoryManager
+    from agent.memory.memory_manager import MemoryManager
 
     manager = MemoryManager()
     session_id = "integration_test_session"

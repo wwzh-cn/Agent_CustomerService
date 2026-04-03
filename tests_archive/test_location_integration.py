@@ -8,7 +8,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 async def test_location():
-    from agent.mcp_client import GaodeMCPClient
+    from agent.mcp.mcp_client import GaodeMCPClient
     print("Testing GaodeMCPClient location...")
     client = GaodeMCPClient()
     try:

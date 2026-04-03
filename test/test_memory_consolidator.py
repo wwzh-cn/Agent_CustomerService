@@ -13,7 +13,7 @@ from datetime import date, datetime, timedelta
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "/..")
 
-from agent.memory_consolidator import MemoryConsolidator, MemoryEntry
+from agent.memory.memory_consolidator import MemoryConsolidator, MemoryEntry
 
 
 class TestMemoryConsolidator:

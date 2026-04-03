@@ -19,7 +19,7 @@ def _get_mcp_client():
     """获取MCP客户端（惰性初始化）"""
     global _mcp_client
     if _mcp_client is None:
-        from agent.mcp_client import GaodeMCPClient
+        from agent.mcp.mcp_client import GaodeMCPClient
         _mcp_client = GaodeMCPClient()
     return _mcp_client
 

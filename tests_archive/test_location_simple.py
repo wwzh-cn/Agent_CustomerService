@@ -5,7 +5,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 async def test():
-    from agent.mcp_client import GaodeMCPClient
+    from agent.mcp.mcp_client import GaodeMCPClient
     client = GaodeMCPClient()
     result = await client.call_location()
     print(f"Result repr: {repr(result)}")

@@ -15,8 +15,8 @@ from unittest.mock import Mock, patch, MagicMock
 import sys
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from agent.semantic_memory import SemanticMemory, MemoryResult
-from agent.memory_chunker import LogChunker, LogChunk
+from agent.memory.semantic_memory import SemanticMemory, MemoryResult
+from agent.memory.memory_chunker import LogChunker, LogChunk
 
 
 class TestMemoryResult(unittest.TestCase):

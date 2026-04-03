@@ -20,7 +20,7 @@ def test_imports():
         return False
 
     try:
-        from agent.integrate_enhanced_skills import get_enhanced_tools, create_all_enhanced_skills
+        from agent.skills.integrate_enhanced_skills import get_enhanced_tools, create_all_enhanced_skills
         print(" integrate_enhanced_skills导入成功")
     except ImportError as e:
         print(f" integrate_enhanced_skills导入失败: {e}")
@@ -34,7 +34,7 @@ def test_enhanced_tools():
     print("\n=== 测试增强工具创建 ===")
 
     try:
-        from agent.integrate_enhanced_skills import get_enhanced_tools, create_all_enhanced_skills
+        from agent.skills.integrate_enhanced_skills import get_enhanced_tools, create_all_enhanced_skills
 
         # 测试创建所有技能实例
         skills = create_all_enhanced_skills()

@@ -18,7 +18,7 @@ async def test_mcp_client():
     print("=" * 60)
 
     try:
-        from agent.mcp_client import GaodeMCPClient
+        from agent.mcp.mcp_client import GaodeMCPClient
 
         # 创建客户端
         client = GaodeMCPClient()

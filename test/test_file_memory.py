@@ -13,7 +13,7 @@ from datetime import date, datetime
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + "/..")
 
-from agent.file_memory import FileMemory
+from agent.memory.file_memory import FileMemory
 
 
 class TestFileMemory:

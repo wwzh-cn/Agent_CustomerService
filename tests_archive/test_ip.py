@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sys
 sys.path.insert(0, '.')
-from agent.mcp_client import GaodeMCPClient
+from agent.mcp.mcp_client import GaodeMCPClient
 
 client = GaodeMCPClient()
 print("Testing _get_public_ip()")

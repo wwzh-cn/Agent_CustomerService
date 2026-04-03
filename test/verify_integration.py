@@ -43,7 +43,7 @@ def check_react_agent_modifications():
 
         checks = [
             ("原有工具导入被注释", "# from agent.tools.agent_tools import"),
-            ("增强技能导入", "from agent.integrate_enhanced_skills import"),
+            ("增强技能导入", "from agent.skills.integrate_enhanced_skills import"),
             ("原有工具列表被注释", "# tools=[rag_summarize, get_weather"),
             ("使用增强工具", "tools=get_enhanced_tools()"),
         ]
