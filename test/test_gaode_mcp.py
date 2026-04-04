@@ -9,9 +9,10 @@ import yaml
 from langchain_mcp_adapters.client import MultiServerMCPClient
 
 # 从配置文件读取API Key
-with open("config/agent.yml") as f:
-    config = yaml.safe_load(f)
-    AMAP_API_KEY = config["gaodekey"]
+with open("config/agent.yml", encoding='utf-8-sig', errors='replace') as f:
+    content = f.read()
+config = yaml.safe_load(content)
+AMAP_API_KEY = config["gaodekey"]
 
 async def main():
     print("=" * 60)

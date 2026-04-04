@@ -148,11 +148,6 @@ def test_memory_integration_with_mocked_agent():
 
         return True
 
-    except Exception as e:
-        print(f"FAIL: Memory integration test failed: {e}")
-        import traceback
-        traceback.print_exc()
-        return False
 
 
 def test_window_memory_mode():
