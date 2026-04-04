@@ -3,8 +3,14 @@ RAG检索效果评估模块
 专注于计算准确率（Precision）和召回率（Recall）
 """
 
-import json
 import os
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'  # 解决OpenMP库冲突问题
+# os.environ['HF_HUB_DOWNLOAD_TIMEOUT'] = '300'  # 设置huggingface下载超时300秒
+# os.environ['HF_HUB_CONNECT_TIMEOUT'] = '60'    # 设置连接超时60秒
+# os.environ['TRANSFORMERS_OFFLINE'] = '1'       # 离线模式，不使用网络
+# os.environ['HF_HUB_OFFLINE'] = '1'             # huggingface hub离线模式
+
+import json
 import sys
 from pathlib import Path
 
@@ -331,13 +337,13 @@ def evaluate_with_and_without_rerank(test_cases_path=None, k=3, runs=1):
     print(f"召回率: {recall_without:.2%} → {recall_with:.2%} (变化: {recall_improvement:+.1f}%)")
 
     if comparison["summary"]["overall_better"]:
-        print("✅ Rerank模式整体效果更优")
+        print("[OK] Rerank模式整体效果更优")
     elif comparison["summary"]["rerank_better_precision"]:
-        print("⚠️ Rerank模式准确率更高，但召回率相似或更低")
+        print("[WARN] Rerank模式准确率更高，但召回率相似或更低")
     elif comparison["summary"]["rerank_better_recall"]:
-        print("⚠️ Rerank模式召回率更高，但准确率相似或更低")
+        print("[WARN] Rerank模式召回率更高，但准确率相似或更低")
     else:
-        print("❌ Rerank模式未带来明显改进")
+        print("[ERROR] Rerank模式未带来明显改进")
 
     return comparison
 

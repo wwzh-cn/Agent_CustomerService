@@ -91,29 +91,34 @@ class ReactAgent:
             semantic_memory_config = agent_conf.get("semantic_memory", {})
 
         if semantic_memory_config.get("enabled", False):
-            self.semantic_memory = SemanticMemory(semantic_memory_config)
-            print(f"[ReactAgent] 语义记忆已启用，向量库路径: {self.semantic_memory.vector_store.persist_directory}")
+            try:
+                self.semantic_memory = SemanticMemory(semantic_memory_config)
+                print(f"[ReactAgent] 语义记忆已启用，向量库路径: {self.semantic_memory.vector_store.persist_directory}")
 
-            # 启动时自动检查并执行增量索引（异步，避免阻塞启动）
-            def auto_index():
-                try:
-                    if self.semantic_memory:
-                        print("[ReactAgent] 正在执行自动增量索引...")
-                        # 索引memory/logs目录下的日志文件
-                        from pathlib import Path
-                        logs_dir = Path("./memory/logs")
-                        if logs_dir.exists():
-                            result = self.semantic_memory.index_logs_directory(logs_dir, pattern="*.md")
-                            print(f"[ReactAgent] 自动索引完成: {result['indexed_files']}个文件，{result['total_chunks']}个块")
-                        else:
-                            print(f"[ReactAgent] 日志目录不存在: {logs_dir}")
-                except Exception as e:
-                    print(f"[ReactAgent] 自动增量索引失败: {e}")
+                # 启动时自动检查并执行增量索引（异步，避免阻塞启动）
+                def auto_index():
+                    try:
+                        if self.semantic_memory:
+                            print("[ReactAgent] 正在执行自动增量索引...")
+                            # 索引memory/logs目录下的日志文件
+                            from pathlib import Path
+                            logs_dir = Path("./memory/logs")
+                            if logs_dir.exists():
+                                result = self.semantic_memory.index_logs_directory(logs_dir, pattern="*.md")
+                                print(f"[ReactAgent] 自动索引完成: {result['indexed_files']}个文件，{result['total_chunks']}个块")
+                            else:
+                                print(f"[ReactAgent] 日志目录不存在: {logs_dir}")
+                    except Exception as e:
+                        print(f"[ReactAgent] 自动增量索引失败: {e}")
 
-            # 延迟5秒后执行，确保不影响启动速度
-            index_timer = threading.Timer(5.0, auto_index)
-            index_timer.daemon = True
-            index_timer.start()
+                # 延迟5秒后执行，确保不影响启动速度
+                index_timer = threading.Timer(5.0, auto_index)
+                index_timer.daemon = True
+                index_timer.start()
+
+            except Exception as e:
+                print(f"[ReactAgent] 语义记忆初始化失败，已禁用: {e}")
+                self.semantic_memory = None
 
             # 构建增强系统提示词（基础提示词 + 记忆上下文）
             base_prompt = load_system_prompts()

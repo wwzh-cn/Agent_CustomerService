@@ -1,0 +1,31 @@
+
+# 测试rerank作用的流程：
+
+# 运行对比评估（推荐）：
+
+
+# from rag.evaluation import evaluate_with_and_without_rerank
+# comparison = evaluate_with_and_without_rerank()
+# 自动对比带rerank和不带rerank的效果，生成准确率、召回率对比报告。
+
+# 命令行直接测试：
+
+
+# python rag/evaluation.py  # 基本评估
+# 或运行集成测试：
+
+
+# python tests/test_rerank_integration.py
+# 手动代码测试：
+
+
+from rag.rag_service import RagSummarizeService
+
+# 测试两种模式
+rag_with = RagSummarizeService(use_rerank=True)
+rag_without = RagSummarizeService(use_rerank=False)
+
+# 对比同一查询的结果
+query = "扫地机器人推荐"
+docs_with = rag_with.retriever_docs(query)
+docs_without = rag_without.retriever_docs(query)

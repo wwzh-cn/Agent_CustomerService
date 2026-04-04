@@ -2,6 +2,13 @@
 """
 总结服务类：用户提问，搜索参考资料，将提问和参考资料提交给模型，让模型总结回复
 """
+import os
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'  # 解决OpenMP库冲突问题
+# os.environ['HF_HUB_DOWNLOAD_TIMEOUT'] = '300'  # 设置huggingface下载超时300秒
+# os.environ['HF_HUB_CONNECT_TIMEOUT'] = '60'    # 设置连接超时60秒
+# os.environ['TRANSFORMERS_OFFLINE'] = '1'       # 离线模式，不使用网络
+# os.environ['HF_HUB_OFFLINE'] = '1'             # huggingface hub离线模式
+
 from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
 from rag.vector_store import VectorStoreService
@@ -34,6 +41,8 @@ class RagSummarizeService(object):
                 rerank_config = load_rerank_config()
                 self.reranker = RerankService(
                     model_name=rerank_config.get("rerank_model", "BAAI/bge-reranker-base"),
+                    model_path=rerank_config.get("model_path"),  # 可选：本地模型路径
+                    cache_dir=rerank_config.get("cache_dir"),    # 可选：缓存目录
                     use_gpu=rerank_config.get("use_gpu", False),
                     max_length=rerank_config.get("max_length", 512),
                     batch_size=rerank_config.get("batch_size", 16)

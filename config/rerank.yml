@@ -1,5 +1,9 @@
 # config/rerank.yml - 重排序配置
-rerank_model: "BAAI/bge-reranker-base"
+
+# 模型配置
+rerank_model: "BAAI/bge-reranker-base"  # FlagReranker模型名称
+model_path: "d:/code/zhisaotong-Agent-master/models/bge-reranker-base"  # 本地模型路径（绝对路径）
+cache_dir: null   # 可选：模型缓存目录，如 "./models/cache"
 use_gpu: false
 max_length: 512  # 模型最大输入长度
 batch_size: 16   # 批量推理大小

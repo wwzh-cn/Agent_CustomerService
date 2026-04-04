@@ -37,7 +37,7 @@ file_memory:
 
 # 语义检索层配置（长期记忆）
 semantic_memory:
-  enabled: true  # 阶段三：已集成到ReactAgent
+  enabled: false  # 阶段三：已集成到ReactAgent
   # 向量数据库配置
   vector_db:
     path: "./memory/vectordb"

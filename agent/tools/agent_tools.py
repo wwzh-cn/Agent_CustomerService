@@ -23,7 +23,7 @@ def _get_mcp_client():
         _mcp_client = GaodeMCPClient()
     return _mcp_client
 
-rag = RagSummarizeService()
+# rag = RagSummarizeService()  # 注释掉以避免循环导入，在函数内部创建实例
 user_ids = ["1001", "1002", "1003", "1004", "1005", "1006", "1007", "1008", "1009", "1010",]
 month_arr = ["2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06",
              "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12", ]
@@ -209,6 +209,8 @@ def get_user_location() -> str:
 
 @tool(description="从向量存储中检索参考资料")
 def rag_summarize(query: str) -> str:
+    from rag.rag_service import RagSummarizeService
+    rag = RagSummarizeService()  # 在函数内部创建实例以避免循环导入
     return rag.rag_summarize(query)
 
 

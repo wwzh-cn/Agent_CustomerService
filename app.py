@@ -1,3 +1,12 @@
+import os
+# os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'  # 解决OpenMP库冲突问题
+# # 设置huggingface镜像和超时
+# os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'  # 使用国内镜像
+# os.environ['HF_HUB_DOWNLOAD_TIMEOUT'] = '300'  # 设置huggingface下载超时300秒
+# os.environ['HF_HUB_CONNECT_TIMEOUT'] = '60'    # 设置连接超时60秒
+# # os.environ['TRANSFORMERS_OFFLINE'] = '1'       # 离线模式，不使用网络
+# os.environ['HF_HUB_OFFLINE'] = '1'             # huggingface hub离线模式
+
 import time
 import uuid
 

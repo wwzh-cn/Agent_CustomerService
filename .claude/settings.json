@@ -5,7 +5,8 @@
       "Bash(python -c \"import sys; print\\('Python version:', sys.version\\)\")",
       "Bash(python -c \"from rag.evaluation import evaluate_with_and_without_rerank; print\\('对比评估函数导入成功'\\)\")",
       "Bash(pip install:*)",
-      "Bash(KMP_DUPLICATE_LIB_OK=TRUE python -c \"from FlagEmbedding import FlagReranker; model = FlagReranker\\('BAAI/bge-reranker-base'\\); print\\('FlagReranker模型加载成功'\\)\")"
+      "Bash(KMP_DUPLICATE_LIB_OK=TRUE python -c \"from FlagEmbedding import FlagReranker; model = FlagReranker\\('BAAI/bge-reranker-base'\\); print\\('FlagReranker模型加载成功'\\)\")",
+      "Bash(KMP_DUPLICATE_LIB_OK=TRUE TRANSFORMERS_OFFLINE=1 HF_HUB_OFFLINE=1 python rerank/test_rerank.py)"
     ]
   }
 }

@@ -5,10 +5,17 @@ RerankService独立测试脚本
 
 import sys
 import os
+
+# 设置环境变量必须在导入任何包之前
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
+os.environ['TRANSFORMERS_OFFLINE'] = '1'
+os.environ['HF_HUB_OFFLINE'] = '1'
+
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from langchain_core.documents import Document
 from rerank.rerank_service import RerankService
+from utils.config_handler import load_rerank_config
 
 
 def test_rerank_basic():
@@ -26,7 +33,14 @@ def test_rerank_basic():
     ]
 
     # 创建rerank服务
-    reranker = RerankService()
+    rerank_config = load_rerank_config()
+    reranker = RerankService(
+        model_name=rerank_config.get("rerank_model", "BAAI/bge-reranker-base"),
+        model_path=rerank_config.get("model_path"),
+        use_gpu=rerank_config.get("use_gpu", False),
+        max_length=rerank_config.get("max_length", 512),
+        batch_size=rerank_config.get("batch_size", 16)
+    )
 
     # 执行重排序
     try:
@@ -37,7 +51,9 @@ def test_rerank_basic():
         print(f"重排序结果数: {len(results)}")
 
         for i, doc in enumerate(results, 1):
-            print(f"  {i}. 分数: {doc.metadata.get('rerank_score', 'N/A'):.4f}, 来源: {doc.metadata.get('source')}")
+            score = doc.metadata.get('rerank_score', 'N/A')
+            score_str = f"{score:.4f}" if score != 'N/A' else score
+            print(f"  {i}. 分数: {score_str}, 来源: {doc.metadata.get('source')}")
             print(f"     内容: {doc.page_content[:60]}...")
 
         print("[OK] 基本重排序测试通过")
@@ -52,7 +68,14 @@ def test_rerank_edge_cases():
     """测试边界情况"""
     print("\n=== 测试2: 边界情况 ===")
 
-    reranker = RerankService()
+    rerank_config = load_rerank_config()
+    reranker = RerankService(
+        model_name=rerank_config.get("rerank_model", "BAAI/bge-reranker-base"),
+        model_path=rerank_config.get("model_path"),
+        use_gpu=rerank_config.get("use_gpu", False),
+        max_length=rerank_config.get("max_length", 512),
+        batch_size=rerank_config.get("batch_size", 16)
+    )
 
     # 测试1: 空候选列表
     empty_results = reranker.rerank("测试", [], top_k=3)
@@ -80,12 +103,26 @@ def test_model_loading():
     print("\n=== 测试3: 模型加载 ===")
 
     try:
+        rerank_config = load_rerank_config()
+
         # 测试默认模型
-        reranker1 = RerankService()
+        reranker1 = RerankService(
+            model_name=rerank_config.get("rerank_model", "BAAI/bge-reranker-base"),
+            model_path=rerank_config.get("model_path"),
+            use_gpu=rerank_config.get("use_gpu", False),
+            max_length=rerank_config.get("max_length", 512),
+            batch_size=rerank_config.get("batch_size", 16)
+        )
         print(f"[OK] 默认模型加载成功: {reranker1.model_name}")
 
         # 测试GPU配置
-        reranker2 = RerankService(use_gpu=False)
+        reranker2 = RerankService(
+            model_name=rerank_config.get("rerank_model", "BAAI/bge-reranker-base"),
+            model_path=rerank_config.get("model_path"),
+            use_gpu=False,
+            max_length=rerank_config.get("max_length", 512),
+            batch_size=rerank_config.get("batch_size", 16)
+        )
         print(f"[OK] CPU模式配置成功")
 
         print("[OK] 模型加载测试通过")

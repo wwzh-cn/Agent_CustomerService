@@ -9,13 +9,26 @@
 
 import sys
 import os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# 添加项目根目录到sys.path，以便导入agent.tools等模块
+# __file__: agent/skills/integrate_enhanced_skills.py
+# 项目根目录: 向上三级目录
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, project_root)
+# 调试：打印sys.path
+print(f"[integrate_enhanced_skills] 项目根目录: {project_root}")
+print(f"[integrate_enhanced_skills] sys.path第一个: {sys.path[0]}")
 
-from enhanced_skill import EnhancedSkill
+# 导入EnhancedSkill类：尝试相对导入，如果失败则使用绝对导入
+try:
+    from .enhanced_skill import EnhancedSkill
+    print("[integrate_enhanced_skills] 使用相对导入EnhancedSkill")
+except ImportError:
+    from agent.skills.enhanced_skill import EnhancedSkill
+    print("[integrate_enhanced_skills] 使用绝对导入EnhancedSkill")
 
 # 尝试导入真实工具函数，如果失败则使用模拟函数（用于测试）
 try:
-    from tools.agent_tools import (
+    from agent.tools.agent_tools import (
         rag_summarize, get_weather, get_user_location,
         get_user_id, get_current_month, fetch_external_data, fill_context_for_report
     )

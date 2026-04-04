@@ -1,27 +1,48 @@
+import os
+# os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'  # 解决OpenMP库冲突问题
+# # 设置huggingface镜像和超时
+# os.environ['HF_ENDPOINT'] = 'https://hf-mirror.com'  # 使用国内镜像
+# os.environ['HF_HUB_DOWNLOAD_TIMEOUT'] = '300'  # 设置huggingface下载超时300秒
+# os.environ['HF_HUB_CONNECT_TIMEOUT'] = '60'    # 设置连接超时60秒
+# # os.environ['TRANSFORMERS_OFFLINE'] = '1'       # 离线模式，不使用网络
+# # os.environ['HF_HUB_OFFLINE'] = '1'             # huggingface hub离线模式
+
 import logging
 from typing import List, Tuple
 from langchain_core.documents import Document
-
+import torch
+from FlagEmbedding import FlagReranker
 logger = logging.getLogger(__name__)
 
 
 class RerankService:
-    """重排序服务，使用BAAI/bge-reranker-base进行文档精排"""
+    """重排序服务，使用FlagEmbedding FlagReranker进行文档精排"""
 
-    def __init__(self, model_name="BAAI/bge-reranker-base", use_gpu=False, max_length=512, batch_size=16):
+    def __init__(self, model_name="BAAI/bge-reranker-base", model_path=None, cache_dir=None, use_gpu=False, max_length=512, batch_size=16, use_fp16=True):
         self.model_name = model_name
+        self.model_path = model_path  # 本地模型路径，优先级高于model_name
+        self.cache_dir = cache_dir    # 模型缓存目录
         self.use_gpu = use_gpu
         self.max_length = max_length
         self.batch_size = batch_size
-        self.model = None  # 延迟加载
+        self.use_fp16 = use_fp16
+        self.model = None
+
+        # 确定设备
+        self.device = "cuda" if (use_gpu and torch.cuda.is_available()) else "cpu"
 
     def _load_model(self):
-        """延迟加载模型"""
+        """加载FlagEmbedding FlagReranker模型"""
         if self.model is None:
             try:
                 from FlagEmbedding import FlagReranker
-                self.model = FlagReranker(self.model_name)
-                logger.info(f"加载重排序模型成功: {self.model_name}")
+
+                # 确定要加载的模型：优先使用本地路径
+                model_to_load = self.model_path if self.model_path else self.model_name
+
+                # 创建并加载模型
+                self.model = FlagReranker(model_to_load, use_fp16=self.use_fp16)
+                logger.info(f"加载重排序模型成功: {model_to_load}, 设备: {self.device}, use_fp16: {self.use_fp16}")
             except ImportError:
                 raise ImportError("请安装FlagEmbedding: pip install FlagEmbedding")
             except Exception as e:
@@ -81,15 +102,11 @@ class RerankService:
         try:
             model = self._load_model()
 
-            # 准备输入对
-            pairs = [(query, text[:self.max_length]) for text in texts]
+            # 准备输入对: [[query, text], ...]
+            pairs = [[query, text[:self.max_length]] for text in texts]
 
             # 批量推理
             scores = model.compute_score(pairs, normalize=True)
-
-            # 如果返回的是二维列表，取第一列
-            if isinstance(scores, list) and len(scores) > 0 and isinstance(scores[0], list):
-                scores = [s[0] for s in scores]
 
             return scores
         except Exception as e:

@@ -1,6 +1,5 @@
 import os
 import asyncio
-import yaml
 import json
 import re
 from typing import Dict, Any, Optional
@@ -16,11 +15,8 @@ class GaodeMCPClient:
     """高德MCP客户端"""
 
     def __init__(self):
-        # 从现有配置文件读取API Key
-        config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "config", "agent.yml")
-        with open(config_path, 'r', encoding='utf-8') as f:
-            config = yaml.safe_load(f)
-            self.api_key = config["gaodekey"]
+        # 使用已经加载的agent_conf获取API Key
+        self.api_key = agent_conf["gaodekey"]
 
         # 初始化MCP客户端
         self.client = MultiServerMCPClient({

@@ -44,3 +44,116 @@ ImportError: `pypdf` package not found, please install it with `pip install pypd
 2026-04-04 10:48:32,810 - agent - INFO - vector_store.py:96 - [加载知识库]D:\code\zhisaotong-Agent-master\data\故障排除.txt 内容加载成功
 2026-04-04 10:48:38,391 - agent - INFO - vector_store.py:96 - [加载知识库]D:\code\zhisaotong-Agent-master\data\维护保养.txt 内容加载成功
 2026-04-04 10:48:43,930 - agent - INFO - vector_store.py:96 - [加载知识库]D:\code\zhisaotong-Agent-master\data\选购指南.txt 内容加载成功
+2026-04-04 18:07:58,614 - agent.memory.index_manager - INFO - index_manager.py:125 - 已加载索引状态: 0 个文件
+2026-04-04 18:07:58,615 - agent.memory.semantic_memory - INFO - semantic_memory.py:178 - 索引管理器初始化完成
+2026-04-04 18:07:58,615 - agent.memory.semantic_memory - INFO - semantic_memory.py:196 - 正在加载 embedding 模型: paraphrase-multilingual-MiniLM-L12-v2
+2026-04-04 18:07:58,620 - agent.memory.semantic_memory - ERROR - semantic_memory.py:229 - 初始化语义记忆组件失败: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 is not the path to a directory containing a file named config.json.
+Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+2026-04-04 18:13:44,560 - agent.memory.index_manager - INFO - index_manager.py:125 - 已加载索引状态: 0 个文件
+2026-04-04 18:13:44,560 - agent.memory.semantic_memory - INFO - semantic_memory.py:178 - 索引管理器初始化完成
+2026-04-04 18:13:44,560 - agent.memory.semantic_memory - INFO - semantic_memory.py:196 - 正在加载 embedding 模型: paraphrase-multilingual-MiniLM-L12-v2
+2026-04-04 18:13:44,567 - agent.memory.semantic_memory - ERROR - semantic_memory.py:229 - 初始化语义记忆组件失败: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 is not the path to a directory containing a file named config.json.
+Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+2026-04-04 18:16:29,007 - agent.memory.index_manager - INFO - index_manager.py:125 - 已加载索引状态: 0 个文件
+2026-04-04 18:16:29,007 - agent.memory.semantic_memory - INFO - semantic_memory.py:178 - 索引管理器初始化完成
+2026-04-04 18:16:29,007 - agent.memory.semantic_memory - INFO - semantic_memory.py:196 - 正在加载 embedding 模型: paraphrase-multilingual-MiniLM-L12-v2
+2026-04-04 18:16:29,014 - agent.memory.semantic_memory - ERROR - semantic_memory.py:229 - 初始化语义记忆组件失败: We couldn't connect to 'https://huggingface.co' to load this file, couldn't find it in the cached files and it looks like sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2 is not the path to a directory containing a file named config.json.
+Checkout your internet connection or see how to run the library in offline mode at 'https://huggingface.co/docs/transformers/installation#offline-mode'.
+2026-04-04 18:18:44,023 - agent.memory.index_manager - INFO - index_manager.py:125 - 已加载索引状态: 0 个文件
+2026-04-04 18:18:44,024 - agent.memory.semantic_memory - INFO - semantic_memory.py:178 - 索引管理器初始化完成
+2026-04-04 18:18:44,024 - agent.memory.semantic_memory - INFO - semantic_memory.py:196 - 正在加载 embedding 模型: paraphrase-multilingual-MiniLM-L12-v2
+2026-04-04 18:19:12,178 - agent.memory.semantic_memory - INFO - semantic_memory.py:202 - Embedding 模型加载完成，设备: cpu
+2026-04-04 18:19:12,178 - agent.memory.semantic_memory - INFO - semantic_memory.py:216 - 正在初始化向量存储: agent_memory
+2026-04-04 18:19:12,407 - agent.memory.semantic_memory - INFO - semantic_memory.py:226 - 语义记忆初始化完成，向量库路径: ./memory/vectordb
+2026-04-04 18:20:14,422 - agent.memory.index_manager - INFO - index_manager.py:125 - 已加载索引状态: 0 个文件
+2026-04-04 18:20:14,422 - agent.memory.semantic_memory - INFO - semantic_memory.py:178 - 索引管理器初始化完成
+2026-04-04 18:20:14,422 - agent.memory.semantic_memory - INFO - semantic_memory.py:196 - 正在加载 embedding 模型: paraphrase-multilingual-MiniLM-L12-v2
+2026-04-04 18:20:19,100 - agent.memory.semantic_memory - INFO - semantic_memory.py:202 - Embedding 模型加载完成，设备: cpu
+2026-04-04 18:20:19,101 - agent.memory.semantic_memory - INFO - semantic_memory.py:216 - 正在初始化向量存储: agent_memory
+2026-04-04 18:20:19,170 - agent.memory.semantic_memory - INFO - semantic_memory.py:226 - 语义记忆初始化完成，向量库路径: ./memory/vectordb
+2026-04-04 18:23:48,948 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有2条消息。
+2026-04-04 18:23:48,948 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 你好，你是谁
+2026-04-04 18:23:56,399 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有4条消息。
+2026-04-04 18:23:56,399 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-04-04 18:24:00,372 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-04 18:24:00,372 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-04 18:24:00,373 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-04 18:24:00,559 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有6条消息。
+2026-04-04 18:24:00,559 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 模拟定位结果: 北京市
+2026-04-04 18:24:04,154 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-04 18:24:04,154 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '北京市'}
+2026-04-04 18:24:04,155 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-04 18:24:04,493 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有8条消息。
+2026-04-04 18:24:04,493 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 模拟天气查询结果: 北京市 25°C，晴朗
+2026-04-04 18:26:27,832 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有2条消息。
+2026-04-04 18:26:27,832 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天长沙的天气怎么样？
+2026-04-04 18:26:35,034 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-04 18:26:35,034 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'city': '长沙'}
+2026-04-04 18:26:35,035 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-04 18:26:35,357 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有4条消息。
+2026-04-04 18:26:35,357 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 模拟天气查询结果: 长沙 25°C，晴朗
+2026-04-04 18:44:44,341 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有2条消息。
+2026-04-04 18:44:44,341 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-04-04 18:44:47,487 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-04 18:44:47,487 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-04 18:44:47,827 - agent - ERROR - agent_tools.py:162 - [get_user_location]MCP定位失败 err=[Errno 2] No such file or directory: 'D:\\code\\zhisaotong-Agent-master\\agent\\config\\agent.yml'
+2026-04-04 18:44:47,827 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-04 18:44:47,913 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有4条消息。
+2026-04-04 18:44:47,913 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 未知城市
+2026-04-04 18:55:08,923 - agent - INFO - mcp_client.py:67 - [MCP location]成功获取公网IP: 58.152.22.98 (来自 https://api.ipify.org)
+2026-04-04 18:58:04,028 - agent - INFO - mcp_client.py:68 - [MCP location]成功获取公网IP: 58.152.22.98 (来自 https://api.ipify.org)
+2026-04-04 19:00:08,446 - agent - INFO - mcp_client.py:65 - [MCP location]成功获取公网IP: 58.152.22.98 (来自 https://api.ipify.org)
+2026-04-04 19:01:08,667 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有2条消息。
+2026-04-04 19:01:08,667 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-04-04 19:01:13,104 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-04 19:01:13,104 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-04 19:01:13,769 - agent - INFO - mcp_client.py:65 - [MCP location]成功获取公网IP: 58.152.22.98 (来自 https://api.ipify.org)
+2026-04-04 19:01:15,985 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-04 19:01:16,111 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有4条消息。
+2026-04-04 19:01:16,111 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 香港特别行政区
+2026-04-04 19:01:19,673 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-04 19:01:19,673 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '香港特别行政区'}
+2026-04-04 19:01:20,738 - agent - ERROR - mcp_client.py:171 - [MCP weather]天气查询失败 city=香港特别行政区 err=API 调用失败：UNKNOWN_ERROR
+2026-04-04 19:01:20,739 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-04 19:01:21,089 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有6条消息。
+2026-04-04 19:01:21,089 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市香港特别行政区天气查询失败，请稍后重试
+2026-04-04 19:01:25,528 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-04 19:01:25,528 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '香港'}
+2026-04-04 19:01:26,880 - agent - ERROR - mcp_client.py:171 - [MCP weather]天气查询失败 city=香港 err=API 调用失败：UNKNOWN_ERROR
+2026-04-04 19:01:26,881 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-04 19:01:27,140 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有8条消息。
+2026-04-04 19:01:27,140 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市香港天气查询失败，请稍后重试
+2026-04-04 19:01:34,793 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：rag_summarize
+2026-04-04 19:01:34,793 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '高湿度环境对扫拖一体机器人使用影响'}
+2026-04-04 19:01:42,045 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有2条消息。
+2026-04-04 19:01:42,045 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-04-04 19:01:42,818 - agent - INFO - middleware.py:24 - [tool monitor]工具rag_summarize调用成功
+2026-04-04 19:01:45,138 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-04 19:01:45,138 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-04 19:01:45,541 - agent - INFO - mcp_client.py:65 - [MCP location]成功获取公网IP: 58.152.22.98 (来自 https://api.ipify.org)
+2026-04-04 19:01:46,964 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-04 19:01:47,084 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有4条消息。
+2026-04-04 19:01:47,084 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 香港特别行政区
+2026-04-04 19:01:50,358 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-04 19:01:50,358 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '香港特别行政区'}
+2026-04-04 19:01:51,768 - agent - ERROR - mcp_client.py:171 - [MCP weather]天气查询失败 city=香港特别行政区 err=API 调用失败：UNKNOWN_ERROR
+2026-04-04 19:01:51,769 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-04 19:01:52,112 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有6条消息。
+2026-04-04 19:01:52,112 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市香港特别行政区天气查询失败，请稍后重试
+2026-04-04 19:01:55,717 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-04 19:01:55,717 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '香港'}
+2026-04-04 19:01:56,646 - agent - ERROR - mcp_client.py:171 - [MCP weather]天气查询失败 city=香港 err=API 调用失败：UNKNOWN_ERROR
+2026-04-04 19:01:56,647 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-04 19:02:11,251 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有2条消息。
+2026-04-04 19:02:11,251 - agent - DEBUG - middleware.py:42 - [log_before_model]HumanMessage | 今天天气怎么样？
+2026-04-04 19:02:14,541 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_user_location
+2026-04-04 19:02:14,541 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': ''}
+2026-04-04 19:02:17,000 - agent - INFO - mcp_client.py:65 - [MCP location]成功获取公网IP: 120.227.57.68 (来自 https://ipv4.icanhazip.com)
+2026-04-04 19:02:19,355 - agent - INFO - middleware.py:24 - [tool monitor]工具get_user_location调用成功
+2026-04-04 19:02:19,397 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有4条消息。
+2026-04-04 19:02:19,397 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 长沙
+2026-04-04 19:02:22,035 - agent - INFO - middleware.py:19 - [tool monitor]执行工具：get_weather
+2026-04-04 19:02:22,035 - agent - INFO - middleware.py:20 - [tool monitor]传入参数：{'__arg1': '长沙'}
+2026-04-04 19:02:23,506 - agent - INFO - middleware.py:24 - [tool monitor]工具get_weather调用成功
+2026-04-04 19:02:24,322 - agent - INFO - middleware.py:40 - [log_before_model]即将调用模型，带有6条消息。
+2026-04-04 19:02:24,322 - agent - DEBUG - middleware.py:42 - [log_before_model]ToolMessage | 城市长沙市天气为晴，气温26摄氏度，空气湿度未知%，东南风1-3级，数据发布时间2026-04-04。
