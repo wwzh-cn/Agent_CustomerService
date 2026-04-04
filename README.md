@@ -1,6 +1,6 @@
 # 智扫通机器人智能客服 🤖
 
-> 基于 LangChain ReAct Agent + RAG + Streamlit 的扫地机器人智能客服系统\n
+> 基于 LangChain ReAct Agent + RAG + Streamlit 的扫地机器人智能客服系统
 > 感谢bamboo-moon开源项目，在基础客服上进行了如下改动
 ---
 # 使用必看
