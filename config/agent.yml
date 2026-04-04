@@ -37,7 +37,7 @@ file_memory:
 
 # 语义检索层配置（长期记忆）
 semantic_memory:
-  enabled: false  # 阶段一完成，暂未集成到ReactAgent
+  enabled: true  # 阶段三：已集成到ReactAgent
   # 向量数据库配置
   vector_db:
     path: "./memory/vectordb"
@@ -55,7 +55,7 @@ semantic_memory:
     chunk_size: 500
     chunk_overlap: 50
     max_chunks_per_file: 100
-    auto_index: false  # 暂不自动索引
+    auto_index: true  # 阶段三：启用自动索引
     index_interval_hours: 24
     force_reindex_days: 30
 

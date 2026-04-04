@@ -214,9 +214,9 @@ class TestSemanticMemory(unittest.TestCase):
         """测试后清理"""
         shutil.rmtree(self.temp_dir)
 
-    @patch('agent.semantic_memory.CHROMA_AVAILABLE', True)
-    @patch('agent.semantic_memory.SentenceTransformer')
-    @patch('agent.semantic_memory.Chroma')
+    @patch('agent.memory.semantic_memory.CHROMA_AVAILABLE', True)
+    @patch('agent.memory.semantic_memory.SentenceTransformer')
+    @patch('agent.memory.semantic_memory.Chroma')
     def test_initialization_with_mocks(self, mock_chroma, mock_sentence_transformer):
         """测试初始化（使用模拟对象）"""
         # 设置模拟对象
@@ -236,7 +236,7 @@ class TestSemanticMemory(unittest.TestCase):
         self.assertEqual(sm.vector_store, mock_store)
         self.assertEqual(sm.embedding_model, mock_model)
 
-    @patch('agent.semantic_memory.CHROMA_AVAILABLE', False)
+    @patch('agent.memory.semantic_memory.CHROMA_AVAILABLE', False)
     def test_initialization_without_dependencies(self):
         """测试缺少依赖时的初始化"""
         sm = SemanticMemory(self.config)
@@ -244,9 +244,9 @@ class TestSemanticMemory(unittest.TestCase):
         self.assertIsNone(sm.vector_store)
         self.assertIsNone(sm.embedding_model)
 
-    @patch('agent.semantic_memory.CHROMA_AVAILABLE', True)
-    @patch('agent.semantic_memory.SentenceTransformer')
-    @patch('agent.semantic_memory.Chroma')
+    @patch('agent.memory.semantic_memory.CHROMA_AVAILABLE', True)
+    @patch('agent.memory.semantic_memory.SentenceTransformer')
+    @patch('agent.memory.semantic_memory.Chroma')
     def test_search_with_mocks(self, mock_chroma, mock_sentence_transformer):
         """测试检索功能（使用模拟对象）"""
         # 设置模拟对象
@@ -294,9 +294,9 @@ class TestSemanticMemory(unittest.TestCase):
         self.assertAlmostEqual(results[0].score, 0.9)  # 1 - 0.1
         self.assertAlmostEqual(results[1].score, 0.7)  # 1 - 0.3
 
-    @patch('agent.semantic_memory.CHROMA_AVAILABLE', True)
-    @patch('agent.semantic_memory.SentenceTransformer')
-    @patch('agent.semantic_memory.Chroma')
+    @patch('agent.memory.semantic_memory.CHROMA_AVAILABLE', True)
+    @patch('agent.memory.semantic_memory.SentenceTransformer')
+    @patch('agent.memory.semantic_memory.Chroma')
     def test_search_with_min_score(self, mock_chroma, mock_sentence_transformer):
         """测试带最低分数阈值的检索"""
         # 设置模拟对象
@@ -331,9 +331,9 @@ class TestSemanticMemory(unittest.TestCase):
         self.assertEqual(results[0].text, "高分文档")
         self.assertGreaterEqual(results[0].score, 0.5)
 
-    @patch('agent.semantic_memory.CHROMA_AVAILABLE', True)
-    @patch('agent.semantic_memory.SentenceTransformer')
-    @patch('agent.semantic_memory.Chroma')
+    @patch('agent.memory.semantic_memory.CHROMA_AVAILABLE', True)
+    @patch('agent.memory.semantic_memory.SentenceTransformer')
+    @patch('agent.memory.semantic_memory.Chroma')
     def test_search_with_context(self, mock_chroma, mock_sentence_transformer):
         """测试检索并格式化为上下文"""
         # 设置模拟对象
@@ -367,9 +367,9 @@ class TestSemanticMemory(unittest.TestCase):
         self.assertIn("这是一个测试文档内容", context)
         self.assertIn("相关性: 0.80", context)
 
-    @patch('agent.semantic_memory.CHROMA_AVAILABLE', True)
-    @patch('agent.semantic_memory.SentenceTransformer')
-    @patch('agent.semantic_memory.Chroma')
+    @patch('agent.memory.semantic_memory.CHROMA_AVAILABLE', True)
+    @patch('agent.memory.semantic_memory.SentenceTransformer')
+    @patch('agent.memory.semantic_memory.Chroma')
     def test_get_stats(self, mock_chroma, mock_sentence_transformer):
         """测试获取统计信息"""
         # 设置模拟对象
@@ -403,11 +403,11 @@ class TestSemanticMemory(unittest.TestCase):
         self.assertEqual(stats["vector_db"]["collection_name"], "test_memory")
         self.assertEqual(stats["vector_db"]["count"], 42)
 
-    @patch('agent.semantic_memory.CHROMA_AVAILABLE', True)
-    @patch('agent.semantic_memory.CHUNKER_AVAILABLE', True)
-    @patch('agent.semantic_memory.SentenceTransformer')
-    @patch('agent.semantic_memory.Chroma')
-    @patch('agent.semantic_memory.LogChunker')
+    @patch('agent.memory.semantic_memory.CHROMA_AVAILABLE', True)
+    @patch('agent.memory.semantic_memory.CHUNKER_AVAILABLE', True)
+    @patch('agent.memory.semantic_memory.SentenceTransformer')
+    @patch('agent.memory.semantic_memory.Chroma')
+    @patch('agent.memory.semantic_memory.LogChunker')
     def test_index_log_file(self, mock_log_chunker_class, mock_chroma, mock_sentence_transformer):
         """测试索引日志文件"""
         # 设置模拟对象

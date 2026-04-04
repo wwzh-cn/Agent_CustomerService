@@ -8,6 +8,11 @@ ReAct 智能体主模块。
 - 创建配置了工具和中间件的 LangChain 智能体
 - 提供流式执行接口，支持实时对话
 - 支持上下文管理，实现动态提示词切换
+
+三层记忆系统：
+- 短期记忆（MemoryManager）：会话层，实时上下文
+- 中期记忆（FileMemory）：文件层，结构化摘要
+- 长期记忆（SemanticMemory）：语义检索层，向量化检索
 """
 
 from langchain.agents import create_agent
@@ -23,6 +28,8 @@ from agent.tools.middleware import monitor_tool, log_before_model, report_prompt
 # 记忆管理器导入
 from agent.memory.memory_manager import MemoryManager
 from agent.memory.file_memory import FileMemory
+# 阶段二：语义记忆（长期记忆）导入
+from agent.memory.semantic_memory import SemanticMemory
 from utils.config_handler import agent_conf
 
 
@@ -37,12 +44,13 @@ class ReactAgent:
     - 提供流式执行方法，支持实时返回 AI 响应
     - 支持上下文管理，实现报告模式的动态切换
     """
-    def __init__(self, memory_config=None, file_memory_config=None):
+    def __init__(self, memory_config=None, file_memory_config=None, semantic_memory_config=None):
         """初始化 ReAct 智能体，配置模型、提示词、工具和中间件。
 
         Args:
             memory_config: 短期记忆配置字典，如果为None则从agent.yml加载
             file_memory_config: 文件记忆配置字典，如果为None则从agent.yml加载
+            semantic_memory_config: 语义记忆配置字典，如果为None则从agent.yml加载
         """
         # 初始化短期记忆管理器
         if memory_config is None:
@@ -75,6 +83,37 @@ class ReactAgent:
             timer = threading.Timer(2.0, auto_consolidate)
             timer.daemon = True  # 设置为守护线程，主程序退出时自动结束
             timer.start()
+
+        # 初始化语义记忆管理器（如果启用）
+        self.semantic_memory = None
+        if semantic_memory_config is None:
+            # 从配置文件中加载语义记忆配置
+            semantic_memory_config = agent_conf.get("semantic_memory", {})
+
+        if semantic_memory_config.get("enabled", False):
+            self.semantic_memory = SemanticMemory(semantic_memory_config)
+            print(f"[ReactAgent] 语义记忆已启用，向量库路径: {self.semantic_memory.vector_store.persist_directory}")
+
+            # 启动时自动检查并执行增量索引（异步，避免阻塞启动）
+            def auto_index():
+                try:
+                    if self.semantic_memory:
+                        print("[ReactAgent] 正在执行自动增量索引...")
+                        # 索引memory/logs目录下的日志文件
+                        from pathlib import Path
+                        logs_dir = Path("./memory/logs")
+                        if logs_dir.exists():
+                            result = self.semantic_memory.index_logs_directory(logs_dir, pattern="*.md")
+                            print(f"[ReactAgent] 自动索引完成: {result['indexed_files']}个文件，{result['total_chunks']}个块")
+                        else:
+                            print(f"[ReactAgent] 日志目录不存在: {logs_dir}")
+                except Exception as e:
+                    print(f"[ReactAgent] 自动增量索引失败: {e}")
+
+            # 延迟5秒后执行，确保不影响启动速度
+            index_timer = threading.Timer(5.0, auto_index)
+            index_timer.daemon = True
+            index_timer.start()
 
             # 构建增强系统提示词（基础提示词 + 记忆上下文）
             base_prompt = load_system_prompts()
@@ -144,7 +183,7 @@ class ReactAgent:
         """
         lines = memory_context.split('\n')
         simplified_lines = []
-
+ 
         # 提取关键部分
         sections_to_include = ['用户查询历史', '重要事实', '用户偏好']
         current_section = None
@@ -335,6 +374,65 @@ class ReactAgent:
             会话ID列表
         """
         return self.memory_manager.get_session_ids()
+
+    def recall_from_memory(self, query: str, session_id: str = None) -> str:
+        """从三层记忆系统回忆信息
+
+        查询顺序：
+        1. 首先检查短期记忆（当前会话）
+        2. 其次检查文件记忆（MEMORY.md）
+        3. 最后使用语义检索（历史日志）
+
+        Args:
+            query: 查询文本
+            session_id: 会话ID（用于短期记忆查询）
+
+        Returns:
+            综合记忆结果，格式化为文本
+        """
+        results = []
+
+        # 1. 检查短期记忆（当前会话）
+        if session_id is not None:
+            history = self.get_session_history(session_id)
+            if history:
+                # 从历史中搜索相关对话
+                for msg in history:
+                    if query.lower() in msg["content"].lower():
+                        results.append(f"[短期记忆] {msg['role']}: {msg['content'][:200]}...")
+                        break
+
+        # 2. 检查文件记忆（如果启用）
+        if self.file_memory is not None:
+            try:
+                # 文件记忆已经加载到系统提示词中，这里可以查询特定内容
+                # 简单实现：返回提示词中已存在的记忆
+                memory_context = self.file_memory.load_context()
+                if query.lower() in memory_context.lower():
+                    # 提取相关行
+                    lines = memory_context.split('\n')
+                    for line in lines:
+                        if query.lower() in line.lower() and line.strip():
+                            results.append(f"[文件记忆] {line[:200]}...")
+                            break
+            except Exception as e:
+                print(f"[ReactAgent] 文件记忆查询失败: {e}")
+
+        # 3. 检查语义记忆（如果启用）
+        if self.semantic_memory is not None:
+            try:
+                semantic_results = self.semantic_memory.search_with_context(query, top_k=3)
+                if semantic_results:
+                    results.append(f"[语义记忆] 找到{len(semantic_results)}条相关记录:")
+                    for i, result in enumerate(semantic_results[:3], 1):
+                        results.append(f"  {i}. {result[:200]}...")
+            except Exception as e:
+                print(f"[ReactAgent] 语义记忆查询失败: {e}")
+
+        if not results:
+            return "未找到相关记忆。"
+
+        return "\n".join(results)
 
 
 if __name__ == '__main__':
