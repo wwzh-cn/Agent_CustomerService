@@ -1,0 +1,13 @@
+# config/rerank.yml - 重排序配置
+rerank_model: "BAAI/bge-reranker-base"
+use_gpu: false
+max_length: 512  # 模型最大输入长度
+batch_size: 16   # 批量推理大小
+
+# 两阶段检索配置
+coarse_k: 10     # 粗排候选数
+fine_k: 3        # 精排输出数
+
+# 降级策略
+fallback_to_original: true  # rerank失败时回退到原排序
+log_failures: true          # 记录失败日志
