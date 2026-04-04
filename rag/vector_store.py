@@ -27,6 +27,47 @@ class VectorStoreService:
     def get_retriever(self):
         return self.vector_store.as_retriever(search_kwargs={"k": chroma_conf["k"]})
 
+    def get_coarse_retriever(self, coarse_k: int = None):
+        """获取粗排检索器（返回更多候选）
+
+        Args:
+            coarse_k: 粗排候选数，默认为配置中的coarse_k或10
+
+        Returns:
+            检索器实例
+        """
+        from utils.config_handler import load_rerank_config
+
+        if coarse_k is None:
+            try:
+                rerank_config = load_rerank_config()
+                coarse_k = rerank_config.get("coarse_k", 10)
+            except:
+                coarse_k = 10
+
+        return self.vector_store.as_retriever(search_kwargs={"k": coarse_k})
+
+
+    def get_fine_retriever(self, fine_k: int = None):
+        """获取精排检索器（原逻辑备份）
+
+        Args:
+            fine_k: 精排输出数，默认为配置中的fine_k或3
+
+        Returns:
+            检索器实例
+        """
+        from utils.config_handler import load_rerank_config
+
+        if fine_k is None:
+            try:
+                rerank_config = load_rerank_config()
+                fine_k = rerank_config.get("fine_k", 3)
+            except:
+                fine_k = chroma_conf["k"]  # 使用原有配置
+
+        return self.vector_store.as_retriever(search_kwargs={"k": fine_k})
+
     def load_document(self):
         """
         从数据文件夹内读取数据文件，转为向量存入向量库
