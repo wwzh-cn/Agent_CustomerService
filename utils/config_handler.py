@@ -25,6 +25,10 @@ def load_agent_config(config_path: str=get_abs_path("config/agent.yml"), encodin
     with open(config_path, "r", encoding=encoding) as f:
         return yaml.load(f, Loader=yaml.FullLoader)
 
+def load_rerank_config(config_path: str=get_abs_path("config/rerank.yml"), encoding: str="utf-8"):
+    with open(config_path, "r", encoding=encoding) as f:
+        return yaml.load(f, Loader=yaml.FullLoader)
+
 
 rag_conf = load_rag_config()
 chroma_conf = load_chroma_config()
