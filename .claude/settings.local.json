@@ -12,7 +12,11 @@
       "Bash(python test/verify_integration.py)",
       "Bash(python -m pytest test/test_gaode_mcp.py -v)",
       "Bash(python -m pytest test/identify_gaode_tools.py -v)",
-      "Bash(python -m pytest test/ -v)"
+      "Bash(python -m pytest test/ -v)",
+      "Bash([ -d \".worktrees/rag-experiment-improvement\" ])",
+      "Bash(git worktree:*)",
+      "Bash(python -m pytest test/ --tb=short -q)",
+      "Bash(python -m pytest test/test_file_memory.py -v)"
     ]
   }
 }
