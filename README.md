@@ -1,7 +1,7 @@
 # 智扫通机器人智能客服 🤖
 
-> 基于 LangChain ReAct Agent + RAG + Streamlit 的扫地机器人智能客服系统
-> 感谢bamboo-moon开源项目，在基础客服上进行了如下改动
+> 基于 LangChain ReAct Agent + RAG + Streamlit 的扫地机器人智能客服系统  
+感谢bamboo-moon开源项目，在基础客服上进行了如下改动
 ---
 # 使用必看
 请务必安装好相关配置环境，其中config/agent.yml文件中的gaodekey需要改为实际申请的高德key(也可以根据个人需要更改为更加隐式的办法)

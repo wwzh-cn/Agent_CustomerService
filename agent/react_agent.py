@@ -186,7 +186,7 @@ class ReactAgent:
         Returns:
             简化的记忆上下文，重点关注用户查询历史和重要事实
         """
-        lines = memory_context.split('\n')
+        lines = memory_context.split('\n') 
         simplified_lines = []
  
         # 提取关键部分

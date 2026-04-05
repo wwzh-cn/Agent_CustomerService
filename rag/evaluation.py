@@ -377,7 +377,11 @@ if __name__ == "__main__":
     print("=== RAG检索效果评估 ===")
     print(f"工作目录: {os.getcwd()}")
 
-    results = evaluate_rag(test_file)
+    ## 使用rerank
+    results = evaluate_rag(test_file, use_rerank=False)
+
+    ## 不使用rerank
+    # results = evaluate_rag(test_file)
 
     if results:
         # 保存评估结果

@@ -1,3 +1,10 @@
+import sys
+import os
+from pathlib import Path
+
+# 添加项目根目录到路径，以便导入utils和model模块
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from utils.config_handler import chroma_conf
@@ -6,7 +13,6 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from utils.path_tool import get_abs_path
 from utils.file_handler import pdf_loader, txt_loader, listdir_with_allowed_type, get_file_md5_hex
 from utils.logger_handler import logger
-import os
 
 
 class VectorStoreService:

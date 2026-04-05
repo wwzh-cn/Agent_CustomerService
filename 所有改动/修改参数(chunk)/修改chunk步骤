@@ -1,0 +1,8 @@
+原因：chunk_size 和 chunk_overlap 控制文本如何被分割成块。修改这些参数会生成不同的 chunk，导致向量表示变化。
+
+操作步骤：
+
+修改 config/chroma.yml 中的 chunk_size 和 chunk_overlap
+删除或清空向量库（删除 chroma_db 目录）
+运行 python rag/vector_store.py 重新加载文档
+注意：vector_store.py 会根据新参数重新分割所有文档并生成向量，MD5校验会避免重复处理未修改的文件。
