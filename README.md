@@ -1,15 +1,13 @@
 # 扫地机器人智能客服系统
-基于 LangChain ReAct Agent + RAG + Streamlit 实现
+技术栈： LangChain ReAct Agent + RAG + Streamlit + MCP + SSE
 
 ## 项目说明
 感谢 bamboo-moon 开源项目，本项目在基础客服系统上进行核心优化：
 
 1. **功能扩展**：使用 MCP 集成高德地图，实现定位获取 + 天气查询功能
-2. **记忆优化**：新增三层记忆模型，提升对话连贯性
+2. **上下文工程优化**：新增三层记忆模型，提升对话连贯性
 3. **检索增强**：采用 Rerank 模式改进 RAG 检索精度
 ---
-# 使用必看
-请务必安装好相关配置环境，其中config/agent.yml文件中的gaodekey需要改为实际申请的高德key(也可以根据个人需要更改为更加隐式的办法)
 
 ## 📖 项目简介
 
@@ -76,175 +74,7 @@
 │  └─ chunk_size=200, k=3       │
 └──────────────────────────────┘
 ```
-
 ---
-
-## 📂 目录结构
-
-```
-zhisaotong-Agent/
-├── app.py                        # Streamlit 前端入口
-├── agent/
-│   ├── react_agent.py            # ReAct Agent 核心逻辑
-│   └── tools/
-│       ├── agent_tools.py        # 工具函数定义
-│       └── middleware.py         # Agent 中间件
-├── rag/
-│   ├── rag_service.py            # RAG 检索摘要服务
-│   └── vector_store.py           # Chroma 向量库管理
-├── model/
-│   └── factory.py                # 模型工厂（LLM + Embedding）
-├── utils/
-│   ├── config_handler.py         # YAML 配置加载器
-│   ├── logger_handler.py         # 日志工具
-│   ├── prompt_loader.py          # 提示词加载器
-│   ├── file_handler.py           # 文档加载（PDF/TXT）
-│   └── path_tool.py              # 路径工具
-├── config/
-│   ├── agent.yml                 # Agent 配置（高德 API Key 等）
-│   ├── rag.yml                   # 模型名称配置
-│   ├── chroma.yml                # 向量库配置
-│   └── prompts.yml               # 提示词文件路径
-├── prompts/
-│   ├── main_prompt.txt           # 主 ReAct 提示词
-│   ├── rag_summarize.txt         # RAG 摘要提示词
-│   └── report_prompt.txt         # 报告生成提示词
-├── data/
-│   ├── 扫地机器人100问.pdf
-│   ├── 扫地机器人100问2.txt
-│   ├── 扫拖一体机器人100问.txt
-│   ├── 故障排除.txt
-│   ├── 维护保养.txt
-│   ├── 选购指南.txt
-│   └── external/
-│       └── records.csv           # 用户使用记录（外部数据）
-├── chroma_db/                    # Chroma 持久化目录（自动生成）
-├── logs/                         # 日志文件目录（自动生成）
-└── md5.text                      # 文档 MD5 去重记录
-```
-
----
-
-## 📦 环境依赖
-
-### Python 版本
-
-建议使用 **Python 3.10+**（代码中使用了 `tuple[str, str]` 等 3.10+ 类型注解语法）。
-
-### 主要依赖包
-
-| 包名 | 用途 |
-|------|------|
-| `streamlit` | 前端 Web 框架 |
-| `langchain` | Agent / Chain / Tool 框架 |
-| `langchain-core` | LangChain 核心抽象 |
-| `langchain-community` | 通义千问、DashScope Embedding 等集成 |
-| `langgraph` | 基于图的 Agent 执行引擎（含 `Runtime`） |
-| `langchain-chroma` | LangChain 与 Chroma 向量库集成 |
-| `chromadb` | Chroma 向量数据库 |
-| `dashscope` | 阿里云 DashScope SDK（Embedding / LLM） |
-| `pypdf` / `pypdf2` | PDF 文档加载 |
-| `pyyaml` | YAML 配置文件解析 |
-
-### 安装依赖
-
-```bash
-pip install streamlit langchain langchain-core langchain-community langgraph \
-            langchain-chroma chromadb dashscope pypdf pyyaml
-```
-
-
----
-
-## ⚙️ 配置说明
-
-### 1. 阿里云 API Key
-
-本项目使用阿里云通义千问大模型和 DashScope Embedding，需要配置系统环境变量：
-
-```bash
-OPENAI_API_KEY="your_open_api_key"
-```
-
-> 可在 [阿里云百炼平台](https://bailian.console.aliyun.com/) 获取 API Key。
-
-### 2. 高德地图 API Key
-
-编辑 `config/agent.yml`，将 `gaodekey` 替换为你的高德地图 Web 服务 API Key：
-
-```yaml
-# config/agent.yml
-external_data_path: data/external/records.csv
-gaodekey: 你的高德key!        # ← 替换这里
-gaode_base_url: https://restapi.amap.com
-gaode_timeout: 5
-```
-
-> 可在 [高德开放平台](https://console.amap.com/) 申请 Web 服务类型的 API Key。
-
-### 3. 模型配置
-
-编辑 `config/rag.yml` 可调整所使用的模型：
-
-```yaml
-# config/rag.yml
-chat_model_name: qwen3-max          # 对话大模型
-embedding_model_name: text-embedding-v4  # 向量化模型
-```
-
-### 4. 向量库配置
-
-编辑 `config/chroma.yml` 可调整 RAG 检索参数：
-
-```yaml
-# config/chroma.yml
-collection_name: agent
-persist_directory: chroma_db
-k: 3                    # 检索返回的最相关文档数量
-data_path: data
-md5_hex_store: md5.text
-allow_knowledge_file_type: ["txt", "pdf"]
-chunk_size: 200         # 文本分块大小
-chunk_overlap: 20       # 分块重叠长度
-```
-
----
-
-## 🚀 快速开始
-
-### 1. 克隆项目
-
-```bash
-git clone https://github.com/bamboo-moon/zhisaotong-Agent.git
-cd zhisaotong-Agent
-```
-
-### 2. 安装依赖
-
-```bash
-pip install streamlit langchain langchain-core langchain-community langgraph \
-            langchain-chroma chromadb dashscope pypdf pyyaml
-```
-
-### 3. 配置 API Key
-
-```bash
-# 设置阿里云 DashScope API Key
-export DASHSCOPE_API_KEY="your_dashscope_api_key"
-
-# 在 config/agent.yml 中配置高德地图 API Key
-```
-
-### 4. 启动应用
-
-```bash
-streamlit run app.py
-```
-
-浏览器将自动打开 `http://localhost:8501`，即可开始与智扫通机器人智能客服对话。
-
----
-
 ## 💬 使用方式
 
 启动后，用户可以在网页聊天界面进行以下操作：
@@ -285,8 +115,8 @@ Agent 配备了以下 7 个工具：
 | 工具名 | 描述 |
 |--------|------|
 | `rag_summarize` | 从向量知识库中检索参考资料，回答产品相关问题 |
-| `get_weather` | 获取指定城市的实时天气（高德 API） |
-| `get_user_location` | 通过 IP 获取用户所在城市（高德 API） |
+| `get_weather` | 获取指定城市的实时天气（高德 MCP） |
+| `get_user_location` | 通过 IP 获取用户所在城市（高德 MCP） |
 | `get_user_id` | 获取当前用户 ID |
 | `get_current_month` | 获取当前月份 |
 | `fetch_external_data` | 从外部系统获取指定用户指定月份的使用记录 |
@@ -349,15 +179,6 @@ logs/
 | `选购指南.txt` | 购买建议与选型指南 |
 
 如需扩展知识库，只需将新的 `.txt` 或 `.pdf` 文件放入 `data/` 目录，重启服务后会自动加载。
-
----
-
-## 🔮 后续优化方向
-
-- 将向量数据库从 Chroma 替换为 Redis（更适合生产部署）
-- 地点、天气等功能完整迁移至高德 MCP 协议
-- 增加用户身份认证与多用户会话隔离
-- 支持更多文档格式（Word、Excel 等）
 
 ---
 
